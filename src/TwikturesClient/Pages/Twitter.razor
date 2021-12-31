@@ -1,0 +1,24 @@
+﻿@page "/twiktures"
+@using Data
+@inject TwitterApiService TwitterSvc
+
+<PageTitle>Twiktures</PageTitle>
+
+<h1>Twiktures</h1>
+
+<input @bind="inputUsername" placeholder="input name">
+<button @onclick="GetUser">Click me</button>
+
+<h3>User shown: @currentUsername</h3>
+
+@code {
+    private string currentUsername = "none";
+    private string? inputUsername;
+
+    private void GetUser()
+    {
+        var result = TwitterSvc.GetUserAsync(inputUsername).Result;
+
+        currentUsername = inputUsername ?? "";
+    }
+}

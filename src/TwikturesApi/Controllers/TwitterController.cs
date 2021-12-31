@@ -20,7 +20,7 @@ public class TwitterController : ControllerBase
     {
         var userResponse = await _twitterClient.UsersV2.GetUserByNameAsync(username);
 
-        if (userResponse.Errors.Any())
+        if (userResponse.Errors != null && userResponse.Errors.Any())
             return BadRequest();
 
         return Ok(Models.User.FromUserV2(userResponse.User));

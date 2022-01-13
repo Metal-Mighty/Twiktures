@@ -2,8 +2,8 @@
 
 namespace TwikturesApi.Controllers;
 
-[Route("api/[controller]")]
 [ApiController]
+[Route("api/[controller]")]
 public class TwitterController : ControllerBase
 {
     private readonly TwitterClient _twitterClient;
@@ -15,7 +15,7 @@ public class TwitterController : ControllerBase
             Environment.GetEnvironmentVariable("TWITTER_BEARER_TOKEN"));
     }
 
-    [HttpGet("/user/{username}")]
+    [HttpGet("user/{username}")]
     public async Task<ActionResult<User>> GetUser(string username)
     {
         var userResponse = await _twitterClient.UsersV2.GetUserByNameAsync(username);
@@ -26,7 +26,7 @@ public class TwitterController : ControllerBase
         return Ok(Models.User.FromUserV2(userResponse.User));
     }
 
-    [HttpGet("/user/{username}/tweets")]
+    [HttpGet("user/{username}/tweets")]
     public async Task<ActionResult<List<Tweet>>> GetUserTweets(string username)
     {
         var parameters = new GetUserTimelineParameters(username)

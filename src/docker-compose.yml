@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  api:
+    build: ./TwikturesApi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TWITTER_CONSUMER_SECRET=${TWITTER_CONSUMER_SECRET}
+      - TWITTER_BEARER_TOKEN=${TWITTER_BEARER_TOKEN}
+      - TWITTER_CONSUMER_KEY=${TWITTER_CONSUMER_KEY}
+      - LOGGING__LOGLEVEL__DEFAULT=Debug
+      - LOGGING__LOGLEVEL__MICROSOFT_ASPNETCORE=Debug
+    ports:
+      - 5000:80
+      - 5001:443

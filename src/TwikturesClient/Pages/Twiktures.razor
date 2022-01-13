@@ -1,0 +1,50 @@
+﻿@page "/twiktures"
+@using Data
+@using TwikturesClient.Models
+@inject TwitterApiService TwitterSvc
+
+<PageTitle>Twiktures</PageTitle>
+
+<h1>Twiktures</h1>
+
+<input @bind="inputUsername" placeholder="input name">
+<button @onclick="@(() => GetUser(inputUsername))">Click me</button>
+
+<h3>User loaded: @currentUser?.Username</h3>
+<img src="@currentUser?.AvatarUrl" />
+<ul>
+    <li>User ID: @currentUser?.Id</li>
+    <li>Name: @currentUser?.Name</li>
+    <li>URL: <a href="https://www.twitter.com/@(currentUser?.Username)">link</a></li>
+</ul>
+
+@foreach (var tweet in userTweets)
+{
+    foreach(var imageUri in tweet.ImageURIs)
+    {
+        <img src="@imageUri" style="max-width: 250px; max-height: 250px;"/>
+    }
+}
+
+@code {
+    string? inputUsername;
+    string? userAvatar;
+    User? currentUser;
+    List<Tweet> userTweets = new List<Tweet>();
+
+    void GetUser(string username)
+    {
+        TwitterSvc.GetUserAsync(username).ContinueWith(res =>
+        {
+            currentUser = res.Result;
+            InvokeAsync(StateHasChanged);
+
+            if (currentUser != null)
+                TwitterSvc.GetUserTweetsAsync(currentUser.Username).ContinueWith(res =>
+                {
+                    userTweets = res.Result;
+                    InvokeAsync(StateHasChanged);
+                });            
+        });
+    }
+}

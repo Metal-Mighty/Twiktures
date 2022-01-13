@@ -16,7 +16,7 @@ public class User
             Id = twitterUser.Id,
             Name = twitterUser.Name,
             Username = twitterUser.Username,
-            AvatarUrl = twitterUser.ProfileImageUrl,
+            AvatarUrl = twitterUser.ProfileImageUrl.Replace("normal", "400x400"),
             Url = twitterUser.Url
         };
     }

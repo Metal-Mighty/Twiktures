@@ -8,7 +8,7 @@
 <h1>Twiktures</h1>
 
 <input @bind="inputUsername" placeholder="input name">
-<button @onclick="@(() => GetUser(inputUsername))">Click me</button>
+<button @onclick="@(() => GetUser(inputUsername, ApiPageAction.None))">Click me</button>
 
 <h3>User loaded: @currentUser?.Username</h3>
 <img src="@currentUser?.AvatarUrl" />
@@ -26,23 +26,41 @@
     }
 }
 
+<button @onclick="@(() => GetUser(inputUsername, ApiPageAction.Previous))">Previous</button> <button @onclick="@(() => GetUser(inputUsername, ApiPageAction.Next))">Next</button>
+
 @code {
     string? inputUsername;
     string? userAvatar;
     User? currentUser;
     List<Tweet> userTweets = new List<Tweet>();
 
-    void GetUser(string username)
+    void GetUser(string username, ApiPageAction pageAction)
     {
+        long? oldestId = null;
+        long? newestId = null;
+
+        if (userTweets.Any())
+        {
+            switch (pageAction)
+            {
+                case ApiPageAction.Previous:
+                    oldestId = userTweets.Select(x => x.Id).Max();
+                    break;
+                case ApiPageAction.Next:
+                    newestId = userTweets.Select(x => x.Id).Min();
+                    break;
+            }
+        }
+
         TwitterSvc.GetUserAsync(username).ContinueWith(res =>
         {
             currentUser = res.Result;
             InvokeAsync(StateHasChanged);
 
             if (currentUser != null)
-                TwitterSvc.GetUserTweetsAsync(currentUser.Username).ContinueWith(res =>
+                TwitterSvc.GetUserTweetsAsync(currentUser.Username, oldestId, newestId).ContinueWith(res =>
                 {
-                    userTweets = res.Result;
+                    userTweets = res.Result ?? new List<Tweet>();
                     InvokeAsync(StateHasChanged);
                 });            
         });

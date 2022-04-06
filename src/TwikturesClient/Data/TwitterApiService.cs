@@ -41,11 +41,11 @@ namespace TwikturesClient.Data
             return null;
         }
 
-        public async Task<List<Tweet>> GetUserTweetsAsync(string username)
+        public async Task<List<Tweet>> GetUserTweetsAsync(string username, long? oldestId, long? newestId)
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<List<Tweet>>($"{_backendUri}/api/twitter/user/{username}/tweets");
+                return await _httpClient.GetFromJsonAsync<List<Tweet>>($"{_backendUri}/api/twitter/user/{username}/tweets?oldestId={oldestId}&newestId={newestId}");
             }
             catch (Exception ex)
             {

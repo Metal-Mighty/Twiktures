@@ -1,5 +1,4 @@
 ﻿using Tweetinvi.Models;
-using Tweetinvi.Models.V2;
 
 namespace TwikturesApi.Models
 {

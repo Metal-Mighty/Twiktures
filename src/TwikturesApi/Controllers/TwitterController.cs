@@ -27,21 +27,26 @@ public class TwitterController : ControllerBase
     }
 
     [HttpGet("user/{username}/tweets")]
-    public async Task<ActionResult<List<Tweet>>> GetUserTweets(string username)
+    public async Task<ActionResult<List<Tweet>>> GetUserTweets(string username, int pageSize = 100, long? oldestId = null, long? newestId = null)
     {
         var parameters = new GetUserTimelineParameters(username)
         {
             IncludeRetweets = false,
             IncludeContributorDetails = false,
             ExcludeReplies = true,
-            IncludeEntities = true
+            IncludeEntities = true,
+            TrimUser = true,
+            PageSize = pageSize,
+            SinceId = oldestId,
+            MaxId = newestId
         };
+        
         var userTweets = await _twitterClient.Timelines.GetUserTimelineAsync(parameters);
 
-        if (userTweets.Length == 0)
+        if (userTweets.Count() == 0)
             return NotFound();
 
-        userTweets = userTweets.Where(tweet => tweet.Media.Any(media => media.MediaType == "photo")).ToArray();
+        var filteredTweets = userTweets.Where(tweet => tweet.Id != oldestId && tweet.Id != newestId && tweet.Media.Any(media => media.MediaType == "photo")).ToArray();
 
         return Ok(userTweets.Select(tweet => Tweet.FromITweet(tweet)));
     }

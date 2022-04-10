@@ -21,12 +21,12 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       - run:
-        working_directory: ./src/
-        name: Build solution
-        command: |
-          dotnet build
+          working_directory: ./src/
+          name: Build solution
+          command: |
+            dotnet build
       - codecov/upload:
-        file: {{ coverage_report_filepath }}
+          file: {{ coverage_report_filepath }}
 
   tests:
     docker:
@@ -34,10 +34,10 @@ jobs:
     steps:
       - checkout
       - run:
-        working_directory: ./src/
-        name: Run tests
-        command: |
-          dotnet test
+         working_directory: ./src/
+         name: Run tests
+         command: |
+            dotnet test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -47,4 +47,3 @@ workflows:
     jobs:
       - build
       - tests
-      - codecov/upload

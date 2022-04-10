@@ -2,9 +2,7 @@
 
 Twiktures allows you to browse a Twitter user's pictures feed as a pretty mosaic to get a quick glance a their content.
 
-The applicaton is currently in a very bare state and serves as a learning project in Blazor and a first step in publishing an open source software. 
-
-Please check [CONTRIBUTING.md](CONTRIBUTING.md) for details on what is open for contribution, and how to contribute.
+The applicaton is currently in a very bare state and serves as a learning project in Blazor and a first step in publishing an open source software.
 
 ## Installation
 TBD

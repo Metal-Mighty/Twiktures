@@ -22,16 +22,16 @@ jobs:
           name: Build solution
           command: |
             dotnet build
-  # tests:
-  #   docker:
-  #     - image: mcr.microsoft.com/dotnet/sdk:6.0
-  #   steps:
-  #     - checkout
-  #     - run:
-  #        working_directory: ./src/
-  #        name: Run tests
-  #        command: |
-  #           dotnet test
+  tests:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
+    steps:
+      - checkout
+      - run:
+         working_directory: ./src/
+         name: Run tests
+         command: |
+            dotnet test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -40,4 +40,4 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
-      # - tests
+      - tests

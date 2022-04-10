@@ -47,3 +47,4 @@ workflows:
     jobs:
       - build
       - tests
+      - codecov/upload

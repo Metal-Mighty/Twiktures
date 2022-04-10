@@ -39,7 +39,7 @@ jobs:
             apt-get update && apt-get install -y openjdk-11-jdk
             dotnet tool install --global dotnet-sonarscanner
             export PATH="$PATH:/root/.dotnet/tools"
-            dotnet sonarscanner begin /k:"{{SONAR_PROJECT_KEY}}" /o:"{{SONAR_OGRANIZAION_KEY}}" /d:sonar.host.url="{{SONAR_HOST_URL}}" /d:sonar.login="$SONAR_TOKEN" /d:sonar.cs.opencover.reportsPaths=/coverage.opencover.xml
+            dotnet sonarscanner begin /k:"{{ .Environment.SONAR_PROJECT_KEY }}" /o:"{{ .Environment.SONAR_OGRANIZAION_KEY }}" /d:sonar.host.url="{{ .Environment.SONAR_HOST_URL }}" /d:sonar.login="{{ .Environment.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths=/coverage.opencover.xml
             dotnet build
             dotnet publish --output /out/
             dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput="/coverage"

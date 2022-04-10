@@ -51,25 +51,4 @@ When you're finished with your changes, create a pull request, also known as a P
 * If you run into any merge issues, checkout this [git tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) to help you resolve merge conflicts and other issues.
 
 ## Code of conduct
-Any page and resource associated with Twiktures must be built and contributed to with the goal of providing a safe and respectful environment in mind.
-
-Contributions of any kind are expected to be done in a positive, constructive and harassment-free way. 
-
-The following is an excerpt of the Contributor Covenant's [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/):
-```
-Examples of behavior that contributes to a positive environment for our community include:
-- Demonstrating empathy and kindness toward other people
-- Being respectful of differing opinions, viewpoints, and experiences
-- Giving and gracefully accepting constructive feedback
-- Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
-- Focusing on what is best not just for us as individuals, but for the overall community
-
-Examples of unacceptable behavior include:
-- The use of sexualized language or imagery, and sexual attention or advances of any kind
-- Trolling, insulting or derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others’ private information, such as a physical or email address, without their explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
-```
-
-Any behavior that doesn't fit this philosophy might be reported directly on my socials or as an issue.
+Please see [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).

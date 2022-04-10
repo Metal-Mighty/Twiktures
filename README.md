@@ -13,5 +13,8 @@ TBD
 ## Contributing
 Please check [CONTRIBUTING.md](CONTRIBUTING.md)
 
+## Code of conduct
+All interaction on our pages must be in accordance with our [Code of Conduct](CODE_OF_CONDUCT.md). 
+
 ## License
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)

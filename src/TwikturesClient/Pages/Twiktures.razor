@@ -1,0 +1,68 @@
+﻿@page "/twiktures"
+@using Data
+@using TwikturesClient.Models
+@inject TwitterApiService TwitterSvc
+
+<PageTitle>Twiktures</PageTitle>
+
+<h1>Twiktures</h1>
+
+<input @bind="inputUsername" placeholder="input name">
+<button @onclick="@(() => GetUser(inputUsername, ApiPageAction.None))">Click me</button>
+
+<h3>User loaded: @currentUser?.Username</h3>
+<img src="@currentUser?.AvatarUrl" />
+<ul>
+    <li>User ID: @currentUser?.Id</li>
+    <li>Name: @currentUser?.Name</li>
+    <li>URL: <a href="https://www.twitter.com/@(currentUser?.Username)">link</a></li>
+</ul>
+
+@foreach (var tweet in userTweets)
+{
+    foreach(var imageUri in tweet.ImageURIs)
+    {
+        <img src="@imageUri" style="max-width: 250px; max-height: 250px;"/>
+    }
+}
+
+<button @onclick="@(() => GetUser(inputUsername, ApiPageAction.Previous))">Previous</button> <button @onclick="@(() => GetUser(inputUsername, ApiPageAction.Next))">Next</button>
+
+@code {
+    string? inputUsername;
+    string? userAvatar;
+    User? currentUser;
+    List<Tweet> userTweets = new List<Tweet>();
+
+    void GetUser(string username, ApiPageAction pageAction)
+    {
+        long? oldestId = null;
+        long? newestId = null;
+
+        if (userTweets.Any())
+        {
+            switch (pageAction)
+            {
+                case ApiPageAction.Previous:
+                    oldestId = userTweets.Select(x => x.Id).Max();
+                    break;
+                case ApiPageAction.Next:
+                    newestId = userTweets.Select(x => x.Id).Min();
+                    break;
+            }
+        }
+
+        TwitterSvc.GetUserAsync(username).ContinueWith(res =>
+        {
+            currentUser = res.Result;
+            InvokeAsync(StateHasChanged);
+
+            if (currentUser != null)
+                TwitterSvc.GetUserTweetsAsync(currentUser.Username, oldestId, newestId).ContinueWith(res =>
+                {
+                    userTweets = res.Result ?? new List<Tweet>();
+                    InvokeAsync(StateHasChanged);
+                });            
+        });
+    }
+}

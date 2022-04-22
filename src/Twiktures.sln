@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwikturesApi", "TwikturesApi\TwikturesApi.csproj", "{462B5C29-64D8-4E30-9C9E-695BCAD459F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwikturesServer", "TwikturesServer\TwikturesServer.csproj", "{462B5C29-64D8-4E30-9C9E-695BCAD459F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwikturesClient", "TwikturesClient\TwikturesClient.csproj", "{3E7BC919-D4A7-45E8-8CCA-BA556EE7D621}"
 EndProject

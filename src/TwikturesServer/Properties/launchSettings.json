@@ -14,7 +14,10 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "TWITTER_CONSUMER_SECRET": "lOMceS38ah5tOKPBmprOhKiLxENStTXIjKqvlOaRjSMRWn9lEI",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "TWITTER_BEARER_TOKEN": "AAAAAAAAAAAAAAAAAAAAACUsWwAAAAAA9QHD3L38yrsOHZkuaIMhdDUeYUM%3DNyRRfiVrH8ZPkoiqXVM2OYJ37SsK6AgB7Rzlh0Z3Dxv6zMEBXi",
+        "TWITTER_CONSUMER_KEY": "CzZAy96V6ruqhu7Jup3V0r5Yq"
       },
       "applicationUrl": "https://localhost:7014;http://localhost:5014",
       "dotnetRunMessages": true

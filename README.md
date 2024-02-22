@@ -1,27 +1,31 @@
 # Twiktures
 
-![Lines of code](https://img.shields.io/tokei/lines/github/Metal-Mighty/Twiktures?style=flat-square) ![CircleCI](https://img.shields.io/circleci/build/github/Metal-Mighty/Twiktures/develop?style=flat-square) ![GitHub issues](https://img.shields.io/github/issues/Metal-Mighty/Twiktures?style=flat-square) ![GitHub pull requests](https://img.shields.io/github/issues-pr/Metal-Mighty/Twiktures?style=flat-square) ![GitHub](https://img.shields.io/github/license/Metal-Mighty/Twiktures?style=flat-square)
+Due to the new costs of usage of the Twitter/X API, I'm archiving this project.
 
-Twiktures allows you to browse a Twitter user's pictures feed as a pretty mosaic to get a quick glance a their content.
+Fuck you, Elon :)
 
-The applicaton is currently in a very bare state and serves as a learning project in Blazor and a first step in publishing an open source software.
+----
 
-## Installation
+~~Twiktures allows you to browse a Twitter user's pictures feed as a pretty mosaic to get a quick glance a their content.~~
 
-TBD
+~~The applicaton is currently in a very bare state and serves as a learning project in Blazor and a first step in publishing an open source software.~~
 
-## Usage
+~~## Installation~~
 
-TBD
+~~TBD~~
 
-## Contributing
+~~## Usage~~
 
-Please check [CONTRIBUTING.md](CONTRIBUTING.md)
+~~TBD~~
 
-## Code of conduct
+~~## Contributing~~
 
-All interaction on our pages must be in accordance with our [Code of Conduct](CODE_OF_CONDUCT.md). 
+~~Please check [CONTRIBUTING.md](CONTRIBUTING.md)~~
 
-## License
+~~## Code of conduct~~
 
-[GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
+~~All interaction on our pages must be in accordance with our [Code of Conduct](CODE_OF_CONDUCT.md).~~
+
+~~## License~~
+
+~~[GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)~~
